@@ -19,4 +19,8 @@ Copy one register into another:
 :let @a=@b
 ```
 
-
+Jump to character:
+```
+f<character>	<-- forward
+F<character>	<-- backward
+```

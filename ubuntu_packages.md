@@ -7,6 +7,7 @@ calcurse
 catfish
 cmus
 cowsay
+dmenu
 git
 greed
 htop
@@ -14,6 +15,7 @@ imagemagick
 jstest-gtk
 mc
 moon-buggy
+moreutils (vidir)
 mutt
 openssh-client
 openssh-server
@@ -22,6 +24,7 @@ pianobar
 preload
 psensor
 redshift
+rofi
 rsync
 sl
 sshfs
@@ -30,7 +33,6 @@ tmux
 tree
 vim
 wget
-moreutils (vidir)
 ```
 
 **GUI:**
@@ -49,6 +51,7 @@ minecraft-installer
 picard
 redshift-gtk
 steam
+vim-gtk
 virtualbox-qt
 vlc
 x11vnc

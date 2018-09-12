@@ -12,6 +12,7 @@ Search and replace:
 Delete lines with match:
 ```
 :g/match/d
+:%g!/match/d	<-- delete lines without match
 ```
 
 Copy one register into another:

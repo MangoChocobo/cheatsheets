@@ -23,4 +23,6 @@ Jump to character:
 ```
 f<character>	<-- forward
 F<character>	<-- backward
+;		<-- repeat
+,		<-- repeat backwards
 ```

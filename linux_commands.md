@@ -1,4 +1,5 @@
 **Easy SSH login**
+
 Generate RSA keys on client and copy to server for passwordless login:
 ```
 ssh-keygen -t rsa
@@ -13,6 +14,7 @@ Host <alias>
 ```
 
 **Git**
+
 Set username/email:
 ```
 git config --global user.name <username>

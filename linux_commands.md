@@ -1,4 +1,4 @@
-**Easy SSH login**
+**SSH**
 
 Generate RSA keys on client and copy to server for passwordless login:
 ```
@@ -11,6 +11,13 @@ Edit SSH config to alias hostname, user, and other settings:
 Host <alias>
 	HostName <hostname>
 	User <user>
+```
+Make SSH connections share TCP connections to same server (muliplexing):
+```
+# contents of $HOME/.ssh/config
+Host *
+   ControlMaster auto
+   ControlPath ~/.ssh/master-%r@%h:%p
 ```
 
 **Git**

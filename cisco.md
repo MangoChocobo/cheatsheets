@@ -1,4 +1,4 @@
-CISCO commands
+#CISCO commands
 ===
 
 [Cheat Sheets](http://packetlife.net/library/cheat-sheets/)
@@ -10,7 +10,7 @@ CISCO commands
 Missing lab 3.3.2.3
 
 
-**Basic config**
+###Basic config
 
 ```
 hostname <NAME>
@@ -24,7 +24,7 @@ ip default-gateway <IP>            --> required for remote access
 ```
 TODO: what are the other two ways to secure the password? (max attempts and complexity?)
 
-**Basic console/VTY config**
+###Basic console/VTY config
 
 ```
 line con 0 (OR) line vty 0 15
@@ -36,7 +36,7 @@ line con 0 (OR) line vty 0 15
     transport input all
 ```
 
-**Basic interface config**
+###Basic interface config
 
 ```
 interface <NAME>
@@ -50,7 +50,7 @@ interface <NAME>
 ipv6 unicast-routing
 ```
 
-**SSH config/Local user creation**
+###SSH config/Local user creation
 
 ```
 ip domain-name <URL>
@@ -64,7 +64,7 @@ ip ssh time-out <SEC>
 ip ssh authentication-retries <#>
 ```
 
-**Creating static routes**
+###Creating static routes
 
 ```
 ip route <DEST IP> <DEST MASK> <NEXT HOP IP>        --> recursive static route
@@ -75,7 +75,7 @@ ipv6 route ::/0 <INT>        --> default static route
 show ip route
 ```
 
-**RIPv2 config**
+###RIPv2 config
 
 ```
 router rip
@@ -86,7 +86,7 @@ router rip
     default-information originate    --> advertise static routes
 ```
 
-**EIGRP**
+###EIGRP
 
 ```
 router eigrp <AS>
@@ -113,7 +113,7 @@ TODO: include ipv6 examples (commands differ significantly)
 
 ![](https://i.imgur.com/QbWRYSA.png)
 
-**VLAN creation, config, and port assignment**
+###VLAN creation, config, and port assignment
 
 ```
 vlan <#>
@@ -148,7 +148,7 @@ interface <INT>
     no shutdown
 ```
 
-**VTP**
+###VTP
 
 ```
 vtp domain <NAME>
@@ -158,14 +158,14 @@ vtp password <PASSWORD>
 show vtp status
 ```
 
-**DTP**
+###DTP
 
 ```
 interface <INT>
     switchport mode dynamic desirable
 ```
 
-**Port security**
+###Port security
 
 ```
 interface <INT>
@@ -183,7 +183,36 @@ show port-security interface <INT>
 ```
 ![](https://i.imgur.com/Mp2L9Bx.png)
 
-**EtherChannel**
+###ACL
+
+Router(config) mode
+	access-list <#> <permit/deny> <address to match/any (any host)/ host (single host address)>
+	# = 1-99 standard ACL, 100-199 extended ACL
+	ex. access-list 99 permit host 10.0.0.1
+	
+	
+Implementing ACL:
+	line vty 0 15
+	access-class <#> <in/out>
+	
+	Allow Pings
+		access-list 102 permit icmp any any echo-reply
+
+###NAT
+```
+Router(config) mode
+	**ip nat pool** <*name*> *start-ip end-ip* {**netmask** *netmask* | **prefix-length** *prefix-length* }
+	**access-list** *access-list-number* **permit** *source* [*source-wildcard*]
+	**ip nat inside source list** *access-list-number* **pool** *name*
+	**interface** *type number*
+	**ip address** *ip-address mask*
+	**ip nat inside**
+	**exit**
+	**interface** *type number*
+	**ip address** *ip-address mask*
+	**ip nat outside**
+```
+###EtherChannel
 
 PAgP:
 ```
@@ -214,7 +243,7 @@ show etherchannel summary
 ```
 ![](https://i.imgur.com/F9M1vQG.png)
 
-**HSRP**
+###HSRP
 
 ```
 interface <INT>        --> Active router
@@ -232,7 +261,7 @@ interface <INT>        --> Standby router
 show standby [brief]
 ```
 
-**"Show" commands**
+###"Show" commands
 
 ```
 show running-config
@@ -248,7 +277,7 @@ show mac address-table
 show ip ssh
 ```
 
-**OSPF**
+###OSPF
 
 ```
 [ipv6] router ospf <PROCESS ID>    --> only has meaning locally
@@ -282,7 +311,7 @@ debug ip ospf adj
 TODO: IPv6 commands
 
 
-**Misc**
+###Misc
 
  
 - You can pipe the output of "show" commands to the `include` or `begin` commands to more quickly find what you need
